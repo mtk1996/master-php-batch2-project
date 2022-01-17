@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <a href="{{route('category.create')}}" class="btn btn-sm btn-success">Create</a>
+    <a href="{{route('course.create')}}" class="btn btn-sm btn-success">Create</a>
 </div>
 
 
@@ -21,6 +21,8 @@
             <td>{{$l->id}}</td>
             <td>{{$l->title}}</td>
             <td>
+                <a href="{{route('course-video.index').'?course_id='.$l->id}}" class="btn btn-sm btn-warning">Manage
+                    Video</a>
                 <a href="{{route('course.edit',$l->id)}}" class="btn btn-sm btn-primary">Edit</a>
                 <form action="{{route('course.destroy',$l->id)}}" class="d-inline" method="POST"
                     onsubmit="return confirm('sure delete?')">
