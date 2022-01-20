@@ -54,7 +54,7 @@ class CourseVideoController extends Controller
         if ($course) {
             CourseVideo::create([
                 'title' => $request->title,
-                'slug' => Str::slug($request->title),
+                'slug' => uniqid() . Str::slug($request->title),
                 'course_id' => $course->id,
                 'video_url' => $request->video_url,
             ]);

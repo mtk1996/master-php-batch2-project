@@ -56,12 +56,8 @@ id      slug     title       decsription     learn_date      price
 
 student_enroll
 ===============
-id      pricing_id           user_id     type(active,expire)
+id      pricing_id      price        user_id    learn_date      expire_date(null)    start_date(null)     type(active,expire,pending)
 
-
-student_enroll_histories
-========================
-pricing_id      user_id
 
 
 script
@@ -111,3 +107,20 @@ Api
 Git
 vps
 share hosting
+
+
+Carbon
+
+10
+
+if(today >= expire){
+    //
+}
+
+2022-1-19 start_date
+       29   expire_date
+
+       20   current date
+
+        9
+date('Y-m-d')

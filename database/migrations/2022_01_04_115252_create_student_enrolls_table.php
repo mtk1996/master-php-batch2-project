@@ -17,8 +17,11 @@ class CreateStudentEnrollsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('pricing_id');
-            $table->enum('type', ['active', 'expire']);
+            $table->enum('type', ['active', 'expire', 'pending'])->default('pending');
             $table->string('learn_date'); //20   50
+            $table->string('start_date')->nullable(); //20   50
+            $table->string('expire_date')->nullable(); //20   50
+            $table->string('payment_image'); //20   50
             $table->timestamps();
         });
     }

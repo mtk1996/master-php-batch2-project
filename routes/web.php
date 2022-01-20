@@ -7,7 +7,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PageController@index');
 Route::get('/course', 'CourseController@all');
 Route::get('/course/{slug}', 'CourseController@detail');
+Route::get('/course-video/{slug}', 'CourseController@showCourseVideo');
 
+Route::get('/plan', 'PageController@showPlan');
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('course-comment', 'CourseController@storeComment');
+
+    Route::get('/active-plan/{slug}', 'PageController@showPaymentForm');
+    Route::post('/active-plan/{slug}', 'PageController@storePaymentForm');
+});
+
+Route::get('/login', function () {
+    $cre = ['email' => 'userone@a.com', 'password' => 'userone'];
+    if (auth()->attempt($cre)) {
+        return auth()->user();
+    }
+})->name('login');
+
+Route::get('/logout', function () {
+    auth()->logout();
+    return redirect('/')->with('success', 'Logout');
+});
 
 
 Route::get('/admin/login/', 'Admin\AuthController@showLogin');

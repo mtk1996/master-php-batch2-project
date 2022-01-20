@@ -11,7 +11,7 @@
                         All Courses
                     </h3>
 
-                    <a href="" class="btn btn-sm btn-danger">
+                    <a href="{{url('/course')}}" class="btn btn-sm btn-danger">
                         View All
                     </a>
                 </div>
@@ -21,43 +21,36 @@
     </div>
     <div class="row mt-1">
         {{-- loop for course --}}
+
+        @foreach ($course as $c)
         <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
+            <a href="{{url('/course/'.$c->slug)}}">
+                <div class="card">
+                    <img src="{{asset('/images/'.$c->image)}}" class="card-header" alt="">
+                    <div class="card-body">
+                        <h4>{{$c->title}}</h4>
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center btn btn-sm btn-danger">
+                                <span class="fas fa-heart"></span>
+                                <br>
+                                {{$c->like_count}}
+                            </div>
+                            <div class="text-center btn btn-sm btn-warning">
+                                <span class="fas fa-comment"></span>
+                                <br>
+                                {{$c->comment_count}}
+                            </div>
+                            <div class="text-center btn btn-sm btn-danger">
+                                <span class="fas fa-play"></span>
+                                <br>
+                                {{$c->video_count}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
-                </div>
-            </div>
-        </div>
-
+        @endforeach
 
     </div>
 </div>
@@ -73,7 +66,7 @@
                         All Articles
                     </h3>
 
-                    <a href="" class="btn btn-sm btn-danger">
+                    <a href="{{url('/article')}}" class="btn btn-sm btn-danger">
                         View All
                     </a>
                 </div>
@@ -83,43 +76,33 @@
     </div>
     <div class="row mt-1">
         {{-- loop for course --}}
+        @foreach ($article as $c)
         <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Article Title</h4>
+            <a href="{{url('/article/'.$c->slug)}}">
+                <div class="card">
+                    <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
+                    <div class="card-body">
+                        <h4>{{$c->title}}</h4>
 
+                        <div class="d-flex justify-content-between">
+                            <div class="text-center btn btn-sm btn-danger">
+                                <span class="fas fa-heart"></span>
+                                <br>
+                                {{$c->like_count}}
+                            </div>
+                            <div class="text-center btn btn-sm btn-warning">
+                                <span class="fas fa-comment"></span>
+                                <br>
+                                {{$c->comment_count}}
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
+            </a>
 
-                </div>
-            </div>
         </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <img src="https://i.ibb.co/mXKQyKB/b85bde27e97c.png" class="card-header" alt="">
-                <div class="card-body">
-                    <h4>Coruse Title</h4>
-
-                </div>
-            </div>
-        </div>
-
+        @endforeach
 
     </div>
 </div>
