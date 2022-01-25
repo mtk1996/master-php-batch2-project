@@ -53,7 +53,12 @@
                             Pricing
                         </li>
                     </a>
-                    <a href="{{url('/admin/logout')}}">
+                    <a href="{{route('pricing.index')}}">
+                        <li class="list-group-item">
+                            Enroll History
+                        </li>
+                    </a>
+                    <a href="{{url('/enroll')}}">
                         <li class="list-group-item">
                             Logout
                         </li>

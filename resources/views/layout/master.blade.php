@@ -47,10 +47,20 @@
                     <a class="nav-link text-white" href="{{url('/course?paid=y')}}">Paid Course</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
+            <div class="form-inline my-2 my-lg-0">
+                @auth
+                <a href="{{url('/dashboard')}}" class="btn btn-sm btn-primary">Dashboard</a>
+                <a href="{{url('/logout')}}" class="btn btn-sm btn-dark">Logout</a>
+                @endauth
+
+
+                @guest
+                <a href="{{url('/register')}}" class="btn btn-sm btn-outline-primary">Register</a>
+                <a href="{{url('/login')}}" class="btn btn-sm btn-outline-primary">Login</a>
+                @endguest
+
+            </div>
         </div>
     </nav>
     @yield('content')

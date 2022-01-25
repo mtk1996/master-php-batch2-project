@@ -12,19 +12,24 @@ Route::get('/course-video/{slug}', 'CourseController@showCourseVideo');
 Route::get('/plan', 'PageController@showPlan');
 
 
+// Auth
+Route::get('/login', 'AuthController@showLogin')->name('login');
+Route::post('/login', 'AuthController@postLogin');
+Route::get('/register', 'AuthController@showRegister');
+Route::post('/register', 'AuthController@postRegister');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::post('course-comment', 'CourseController@storeComment');
 
     Route::get('/active-plan/{slug}', 'PageController@showPaymentForm');
     Route::post('/active-plan/{slug}', 'PageController@storePaymentForm');
+
+    Route::get('/dashboard', 'PageController@showDashboard');
+
+    Route::get('/logout', 'AuthControler@logout');
 });
 
-Route::get('/login', function () {
-    $cre = ['email' => 'userone@a.com', 'password' => 'userone'];
-    if (auth()->attempt($cre)) {
-        return auth()->user();
-    }
-})->name('login');
+
 
 Route::get('/logout', function () {
     auth()->logout();
@@ -46,9 +51,12 @@ Route::group(['prefix' => "admin", 'namespace' => "Admin", 'middleware' => "Admi
 
     Route::resource('pricing', 'PricingController');
 
+    //enroll
+    Route::get('/enroll', 'StudentEnrollController@showAll');
+    Route::get('/enroll-active/{id}', 'StudentEnrollController@setActive');
+
     Route::get('/logout', 'AuthController@logout');
 });
-
 
 Route::get('/test', function () {
     return Course::where('id', 4)->withCount('video')->with('video')->first();

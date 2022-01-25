@@ -53,4 +53,13 @@ class PageController extends Controller
         ]);
         return redirect('/')->with('success', 'Please Wait About 24 hours');
     }
+
+    public function showDashboard()
+    {
+        $enroll = StudentEnroll::where('user_id', auth()->id())
+            ->with('pricing')
+            ->orderBy('id', 'desc')->paginate(10);
+
+        return view('dashboard', compact('enroll'));
+    }
 }
